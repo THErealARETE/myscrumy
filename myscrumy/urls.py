@@ -23,3 +23,5 @@ urlpatterns = [
 
 
 # benpelumiscrumy/
+# git remote add origin https://github.com/THErealARETE/myscrumy.git
+# git push -u origin master
