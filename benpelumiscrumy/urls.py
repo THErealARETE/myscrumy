@@ -13,7 +13,7 @@ from benpelumiscrumy import views
 
 urlpatterns = [
     # path('', homePage, name='home'),
-     path( '', views.index, name = 'homealone' )
+     path( '', views.index, name = 'index' )
 ]
 
 
