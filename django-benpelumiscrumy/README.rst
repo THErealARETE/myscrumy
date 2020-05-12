@@ -1,0 +1,1 @@
+A simple django project for the linuxjobber internship

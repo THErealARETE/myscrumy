@@ -1,0 +1,8 @@
+MANIFEST.in
+README.rst
+setup.py
+benpelumiscrumy.egg-info/PKG-INFO
+benpelumiscrumy.egg-info/SOURCES.txt
+benpelumiscrumy.egg-info/dependency_links.txt
+benpelumiscrumy.egg-info/top_level.txt
+migrations/__init__.py
