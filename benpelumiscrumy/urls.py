@@ -7,9 +7,14 @@
 # ]
 
 from django.urls import path
-from .views import homePage
+# from .views import homePage
+from benpelumiscrumy import views
 
 
 urlpatterns = [
-    path('', homePage, name='home'),
+    # path('', homePage, name='home'),
+     path( '', views.index, name = 'homealone' )
 ]
+
+
+    
