@@ -11,7 +11,7 @@ from django.http import HttpResponse
 # def homePage(request) :
 #      return HttpResponse("This is a Scrum Application")
 
-def index(request) :
+def get_grading_parameters(request) :
       return HttpResponse("This is a Scrum Application")
 
  

@@ -13,7 +13,7 @@ from benpelumiscrumy import views
 
 urlpatterns = [
     # path('', homePage, name='home'),
-     path( '', views.index, name = 'index' )
+     path( '', views.get_grading_parameters, name = 'index' )
 ]
 
 
