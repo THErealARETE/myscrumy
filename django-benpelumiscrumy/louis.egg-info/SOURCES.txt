@@ -1,8 +1,0 @@
-MANIFEST.in
-README.rst
-setup.py
-louis.egg-info/PKG-INFO
-louis.egg-info/SOURCES.txt
-louis.egg-info/dependency_links.txt
-louis.egg-info/top_level.txt
-migrations/__init__.py

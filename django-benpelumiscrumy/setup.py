@@ -1,9 +1,9 @@
 from setuptools import setup, find_packages
 setup(
-    name="louis",
+    name="benpelumi",
     version="0.1",
     author = "benpelumiscrumy",
-    author_email = "louis@linuxjobber.com",
+    author_email = "benpelumi@gmail.com",
     packages=find_packages(),
 )
 
