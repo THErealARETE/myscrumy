@@ -6,9 +6,12 @@ from django.contrib.auth.models import User
 class GoalStatus(models.Model):
     status_name = models.CharField(max_length = 30)
 
+    def __str__(self):
+        return self.status_name    
+
 class ScrumyGoals(models.Model):
     goal_name = models.CharField(max_length = 30)
-    goal_id = models.IntegerField( default = '1')
+    goal_id = models.IntegerField( default = 1)
     created_by = models.CharField(max_length = 30)
     moved_by = models.CharField(max_length = 30)
     owner = models.CharField(max_length = 30)
@@ -22,6 +25,10 @@ class ScrumyGoals(models.Model):
         on_delete = models.PROTECT
     )
 
+    def __str__(self):
+        return self.goal_name
+       
+
 class ScrumyHistory(models.Model):
     moved_by = models.CharField(max_length = 30)
     created_by = models.CharField(max_length = 30)
@@ -32,3 +39,5 @@ class ScrumyHistory(models.Model):
         ScrumyGoals,
         on_delete = models.PROTECT
     )
+    def __str__(self):
+        return self.created_by 
