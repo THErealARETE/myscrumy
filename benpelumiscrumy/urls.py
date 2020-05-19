@@ -13,7 +13,8 @@ from benpelumiscrumy import views
 
 urlpatterns = [
     # path('', homePage, name='home'),
-     path( '', views.get_grading_parameters, name = 'index' )
+     path( '', views.get_grading_parameters, name = 'index' ),
+     path('scrumygoal/<int:goal_id>', views.move_goal)
 ]
 
 
