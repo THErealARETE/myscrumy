@@ -13,9 +13,9 @@ import datetime
 #      return HttpResponse("This is a Scrum Application")
 
 def get_grading_parameters(request) :
-      return HttpResponse("This is a Scrum Application")
-      # goals = ScrumyGoals.objects.filter(goal_name = 'Learn Django')
-      # return HttpResponse(goals)
+      # return HttpResponse("This is a Scrum Application")
+      goals = ScrumyGoals.objects.filter(goal_name = 'Learn Django')
+      return HttpResponse(goals)
 
 # def move_goal(request) :
 # receive a request object and a goal_id from the url
