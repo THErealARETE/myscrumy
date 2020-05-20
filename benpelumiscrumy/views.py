@@ -10,7 +10,12 @@ from django.contrib.auth.models import User
 def get_grading_parameters(request) :
       # return HttpResponse("This is a Scrum Application")
       goals = ScrumyGoals.objects.filter(goal_name = 'Learn Django')
-      return HttpResponse(goals)
+      # goals = ScrumyGoals.objects.filter(goal_id = 1)
+      # return HttpResponse(goals)
+      goals = "learn django"
+      learnDjangoUser = User.objects.get(username = 'louis')
+      scrumyValues = {'goal_name': goals , 'goal_id' : 1 ,'user' : learnDjangoUser  }
+      return render(request, 'home.html' ,scrumyValues )
 
 
 
