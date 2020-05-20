@@ -8,14 +8,9 @@ from random import randint
 from django.contrib.auth.models import User
 
 def get_grading_parameters(request) :
-      # return HttpResponse("This is a Scrum Application")
-      goals = ScrumyGoals.objects.filter(goal_name = 'Learn Django')
-      # goals = ScrumyGoals.objects.filter(goal_id = 1)
-      # return HttpResponse(goals)
-      goals = "learn django"
-      learnDjangoUser = User.objects.get(username = 'louis')
-      scrumyValues = {'goal_name': goals , 'goal_id' : 1 ,'user' : learnDjangoUser  }
-      return render(request, 'home.html' ,scrumyValues )
+      goals2 = ScrumyGoals.objects.filter(goal_name = 'keep learning django')
+      return HttpResponse(goals2) 
+
 
 
 
@@ -31,8 +26,14 @@ def add_goal(request):
       return addGoal
 
 def home (request):
-     goals2 = ScrumyGoals.objects.filter(goal_name = 'keep learning django')
-     return HttpResponse(goals2) 
+      # return HttpResponse("This is a Scrum Application")
+      goals = ScrumyGoals.objects.filter(goal_name = 'Learn Django')
+      # goals = ScrumyGoals.objects.filter(goal_id = 1)
+      # return HttpResponse(goals)
+      goals = "learn django"
+      learnDjangoUser = User.objects.get(username = 'louis')
+      scrumyValues = {'goal_name': goals , 'goal_id' : 1 ,'user' : learnDjangoUser  }
+      return render(request, 'home.html' ,scrumyValues )
 
 # def current_datetime(request):
 #     now = datetime.datetime.now()
