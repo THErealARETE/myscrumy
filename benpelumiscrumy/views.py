@@ -13,7 +13,6 @@ def get_grading_parameters(request) :
 
 
 
-
 def move_goal(request, goal_id):
       
       try:
@@ -21,7 +20,7 @@ def move_goal(request, goal_id):
       except Exception as e:
             return render (request, 'exception.html', {'error' :'A record with that goal id does not exist'} )
       else:
-            return HttpResponse(display)
+            return HttpResponse(display.goal_name)
       # try:
       #       pass
       # except expression as identifier:
