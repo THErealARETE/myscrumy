@@ -1,25 +1,33 @@
 from django.shortcuts import render
 # Create your views here.
-
 from django.http import HttpResponse 
 from  .models import *
 # import datetime
 from random import randint
 from django.contrib.auth.models import User
+from django.http import Http404
+from django.core.exceptions import *
 
 def get_grading_parameters(request) :
       goals2 = ScrumyGoals.objects.filter(goal_name = 'keep learning django')
       return HttpResponse(goals2) 
 
 
-def move_goal(request, goal_id):
+# def move_goal(request, goal_id):
       
+#       try:
+#             display = ScrumyGoals.objects.get(goal_id = goal_id)
+#       except Exception as e :
+#             return render (request, 'exception.html', {'error' :'A record with that goal id does not exist'} )
+#       else:
+#             return HttpResponse(display.goal_name)
+
+def move_goal(request, goal_id):
       try:
             display = ScrumyGoals.objects.get(goal_id = goal_id)
-      except :
-            return render (request, 'exception.html', {'error' :'A record with that goal id does not exist'} )
-      else:
-            return HttpResponse(display.goal_name)
+      except  ScrumyGoals.DoesNotExist:
+            raise Http404('error = A record with that goal id does not exist' )
+      return HttpResponse(display.goal_name)
 
 def add_goal(request):
       goalId = randint(1000, 9999)
