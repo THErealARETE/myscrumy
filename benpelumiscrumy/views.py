@@ -17,16 +17,10 @@ def move_goal(request, goal_id):
       
       try:
             display = ScrumyGoals.objects.get(goal_id = goal_id)
-      except Exception as e:
+      except :
             return render (request, 'exception.html', {'error' :'A record with that goal id does not exist'} )
       else:
             return HttpResponse(display.goal_name)
-      # try:
-      #       pass
-      # except expression as identifier:
-      #       pass
-      # else:
-      #       pass
 
 def add_goal(request):
       goalId = randint(1000, 9999)
