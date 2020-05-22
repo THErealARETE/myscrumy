@@ -47,7 +47,7 @@ def add_goal(request):
       goalStatus = GoalStatus.objects.last()
       addGoalUser = User.objects.get(username = 'louis')
       addGoal = ScrumyGoals.objects.create(goal_name = 'keep learning django', goal_id = goalId, created_by = 'Louis' , moved_by = 'Louis', owner = 'Louis' , goal_status = goalStatus ,user = addGoalUser ) 
-      return addGoal
+      return HttpResponse(addGoal)
 
 def home (request):
       # return HttpResponse("This is a Scrum Application")
