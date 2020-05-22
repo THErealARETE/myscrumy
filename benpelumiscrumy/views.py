@@ -13,13 +13,27 @@ def get_grading_parameters(request) :
       return HttpResponse(goals2) 
 
 
+# def move_goal(request, goal_id):
+#       dic = ({ 'error' : "A record with that goal id does not exist"})
+#       dictionary = {'dict1' : dic}
+#       try:
+#             display = ScrumyGoals.objects.get(goal_id = goal_id)
+#       except Exception as e:
+#             return render (request, 'exception.html', dictionary )
+#       else:
+#             return HttpResponse(display.goal_name)
+
 def move_goal(request, goal_id):
-      try:
-            display = ScrumyGoals.objects.get(goal_id = goal_id)
-      except Exception as e:
-            return render (request, 'exception.html', {'error' :'A record with that goal id does not exist'} )
-      else:
-            return HttpResponse(display.goal_name)
+    #obj1 = get_object_or_404(ScrumyGoals, pk=goal_id)
+        dic = ({ 'error' : "A record with that goal id does not exist"})
+        dictionary = {'dict1' : dic}
+        try:
+            display = ScrumyGoals.objects.get(pk = goal_id)
+        except Exception as e:
+            return render (request, 'exception.html', dictionary)
+    
+        else:
+            return HttpResponse(display.goal_name)           
 
 # def move_goal(request, goal_id):
 #       try:
