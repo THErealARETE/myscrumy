@@ -12,7 +12,6 @@ def get_grading_parameters(request) :
       return HttpResponse(goals2) 
 
 
-
 def move_goal(request, goal_id):
       
       try:
