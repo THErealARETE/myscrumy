@@ -30,7 +30,7 @@ def move_goal(request, goal_id):
         try:
             display = ScrumyGoals.objects.get(pk = goal_id)
         except Exception as e:
-            return render (request, 'exception.html', dictionary)
+            return render (request, '404.html', dictionary)
     
         else:
             return HttpResponse(display.goal_name)           

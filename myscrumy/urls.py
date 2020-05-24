@@ -24,7 +24,7 @@ urlpatterns = [
     #  path ('' , include ('benpelumiscrumy.urls'))
 ]
 
-
+# handler404 = 'benpelumiscrumy.views.error_404_view'
 # benpelumiscrumy/
 # git remote add origin https://github.com/THErealARETE/myscrumy.git
 # git push -u origin master
