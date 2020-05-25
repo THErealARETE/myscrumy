@@ -16,7 +16,7 @@ def move_goal(request, goal_id):
       dic = ({ 'error' : "A record with that goal id does not exist"})
       dictionary = {'dict1' : dic}
       try:
-            display = ScrumyGoals.objects.get(goal_id = goal_id)
+            display = ScrumyGoals.objects.get(pk = goal_id)
       except Exception as e:
             return render (request, 'exception.html', dictionary )
       else:
