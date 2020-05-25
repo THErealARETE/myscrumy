@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>User</th>
+            <th>Weekly Goals</th>
+            <th>Daily Goals</th>
+            <th>Verify Goals</th>
+            <th>Done Goals</th>
+        </tr>
+        <tr>
+            <td>{{user}}</td>
+            <td> {{goal_name}} {{goal_id}}</td>
+        </tr>
+    </table>
+</body>
+</html>

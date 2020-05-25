@@ -5,23 +5,22 @@ from  .models import *
 # import datetime
 from random import randint
 from django.contrib.auth.models import User
-from django.http import Http404
-from django.core.exceptions import *
+# from django.core.exceptions import *
 
 def get_grading_parameters(request) :
       goals2 = ScrumyGoals.objects.filter(goal_name = 'keep learning django')
       return HttpResponse(goals2) 
 
 
-# def move_goal(request, goal_id):
-#       dic = ({ 'error' : "A record with that goal id does not exist"})
-#       dictionary = {'dict1' : dic}
-#       try:
-#             display = ScrumyGoals.objects.get(goal_id = goal_id)
-#       except Exception as e:
-#             return render (request, 'exception.html', dictionary )
-#       else:
-#             return HttpResponse(display.goal_name)
+def move_goal(request, goal_id):
+      dic = ({ 'error' : "A record with that goal id does not exist"})
+      dictionary = {'dict1' : dic}
+      try:
+            display = ScrumyGoals.objects.get(goal_id = goal_id)
+      except Exception as e:
+            return render (request, 'exception.html', dictionary )
+      else:
+            return HttpResponse(display.goal_name)
 
 # def move_goal(request, goal_id):
 #     #obj1 = get_object_or_404(ScrumyGoals, pk=goal_id)
