@@ -5,6 +5,7 @@ from  .models import *
 # import datetime
 from random import randint
 from django.contrib.auth.models import User
+from django.core.exceptions import ObjectDoesNotExist
 # from django.core.exceptions import *
 
 def get_grading_parameters(request) :
@@ -13,12 +14,11 @@ def get_grading_parameters(request) :
 
 
 def move_goal(request, goal_id):
-      dic = ({ 'error' : "A record with that goal id does not exist"})
-      dictionary = {'dict1' : dic}
+      dictionary = { 'error' : "A record with that goal id does not exist"}
       try:
-            display = ScrumyGoals.objects.get(pk = goal_id)
-      except Exception as e:
-            return render (request, 'exception.html', dictionary )
+            display = ScrumyGoals.objects.get(goal_id = goal_id)
+      except ObjectDoesNotExist:
+            return render (request, 'benpelumiscrumy/exception.html', dictionary )
       else:
             return HttpResponse(display.goal_name)
 
@@ -56,7 +56,7 @@ def home (request):
       goals = "learn django"
       learnDjangoUser = User.objects.get(username = 'louis')
       scrumyValues = {'goal_name': goals , 'goal_id' : 1 ,'user' : learnDjangoUser  }
-      return render(request, 'home.html' ,scrumyValues )
+      return render(request, 'benpelumiscrumy/home.html' ,scrumyValues )
 
 # def current_datetime(request):
 #     now = datetime.datetime.now()
