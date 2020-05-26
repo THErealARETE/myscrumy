@@ -41,22 +41,22 @@ def move_goal(request, goal_id):
 #             raise Http404('error = A record with that goal id does not exist' )
 #       return HttpResponse(display.goal_name)
 
-def add_goal(request):
-      goalId = randint(1000, 9999)
-      goalStatus = GoalStatus.objects.last()
-      addGoalUser = User.objects.get(username = 'louis')
-      addGoal = ScrumyGoals.objects.create(goal_name = 'keep learning django', goal_id = goalId, created_by = 'Louis' , moved_by = 'Louis', owner = 'Louis' , goal_status = goalStatus ,user = addGoalUser ) 
-      return HttpResponse(addGoal)
+# def add_goal(request):      
+#       goalId = randint(1000, 9999)
+#       goalStatus = GoalStatus.objects.last()
+#       addGoalUser = User.objects.get(username = 'louis')
+#       addGoal = ScrumyGoals.objects.create(goal_name = 'keep learning django', goal_id = goalId, created_by = 'Louis' , moved_by = 'Louis', owner = 'Louis' , goal_status = goalStatus ,user = addGoalUser ) 
+#       return HttpResponse(addGoal)
 
-def home (request):
-      # return HttpResponse("This is a Scrum Application")
-      goals = ScrumyGoals.objects.filter(goal_name = 'Learn Django')
-      # goals = ScrumyGoals.objects.filter(goal_id = 1)
-      # return HttpResponse(goals)
-      goals = "learn django"
-      learnDjangoUser = User.objects.get(username = 'louis')
-      scrumyValues = {'goal_name': goals , 'goal_id' : 1 ,'user' : learnDjangoUser  }
-      return render(request, 'benpelumiscrumy/home.html' ,scrumyValues )
+# def home (request):
+#       # return HttpResponse("This is a Scrum Application")
+#       goals = ScrumyGoals.objects.filter(goal_name = 'Learn Django')
+#       # goals = ScrumyGoals.objects.filter(goal_id = 1)
+#       # return HttpResponse(goals)
+#       goals = "learn django"
+#       learnDjangoUser = User.objects.get(username = 'louis')
+#       scrumyValues = {'goal_name': goals , 'goal_id' : 1 ,'user' : learnDjangoUser  }
+#       return render(request, 'benpelumiscrumy/home.html' ,scrumyValues )
 
 # def current_datetime(request):
 #     now = datetime.datetime.now()

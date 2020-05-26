@@ -11,17 +11,18 @@ class GoalStatus(models.Model):
 
 class ScrumyGoals(models.Model):
     goal_name = models.CharField(max_length = 30)
-    goal_id = models.IntegerField( default = 1)
+    goal_id = models.IntegerField( default = 1, unique=True)
     created_by = models.CharField(max_length = 30)
     moved_by = models.CharField(max_length = 30)
     owner = models.CharField(max_length = 30)
     goal_status = models.ForeignKey(
         GoalStatus,
-        on_delete = models.PROTECT
+        on_delete = models.PROTECT,
+        related_name = 'Scrumy_Goals'
     ) 
     user = models.ForeignKey(
         User,
-        related_name = 'ScrumyGoals',
+        related_name = 'Scrumy_Users',
         on_delete = models.PROTECT
     )
 
