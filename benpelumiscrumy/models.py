@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from random import randint
 
 # Create your models here.
 
@@ -8,22 +9,23 @@ class GoalStatus(models.Model):
 
     def __str__(self):
         return self.status_name    
-
+# default = 1,unique=True,
 class ScrumyGoals(models.Model):
     goal_name = models.CharField(max_length = 30)
-    goal_id = models.IntegerField( default = 1, unique=True)
+    goal_id = models.IntegerField( unique = True )
     created_by = models.CharField(max_length = 30)
     moved_by = models.CharField(max_length = 30)
     owner = models.CharField(max_length = 30)
     goal_status = models.ForeignKey(
         GoalStatus,
         on_delete = models.PROTECT,
-        related_name = 'Scrumy_Goals'
+        related_name='scrumy_goal',
+        # null = True
     ) 
     user = models.ForeignKey(
         User,
-        related_name = 'Scrumy_Users',
-        on_delete = models.PROTECT
+        on_delete = models.PROTECT,
+        related_name = 'goal_owner'
     )
 
     def __str__(self):

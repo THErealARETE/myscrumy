@@ -24,6 +24,7 @@
         </style>
 </head>
 <body>
+  <p> {{request.user.username}} is logged in </p>
     <table>
         <tr>
             <th>User</th>
@@ -32,10 +33,56 @@
             <th>Verify Goals</th>
             <th>Done Goals</th>
         </tr>
-        <tr>
-            <td>{{user}}</td>
-            <td> {{goal_name}} {{goal_id}}</td>
-        </tr>
+       
+        <tbody>
+          {%for user in users%}
+          <tr>
+            <td>
+              {{user.username}}
+            </td>
+            
+            <td>
+              
+              {% for user_goal in user.goal_owner.all %}
+              {% if user_goal in weekly_goals %}
+              <a href="{% url 'benpelumiscrumy:moveGoal' goal_id=user_goal.goal_id %}">
+              {{user_goal.goal_name}}: {{user_goal.goal_id}}
+              </a>
+              {% endif %}
+              {% endfor %}
+              
+            </td>
+            <td>
+              {% for user_goal in user.goal_owner.all %}
+              {% if user_goal in daily_goals %}
+              <a href="{% url 'benpelumiscrumy:moveGoal' goal_id=user_goal.goal_id %}">
+              {{user_goal.goal_name}}: {{user_goal.goal_id}}
+              </a>
+              {% endif %}
+              {% endfor %}
+            </td>
+            <td>
+              {% for user_goal in user.goal_owner.all %}
+              {% if user_goal in verify_goals %}
+              <a href="{% url 'benpelumiscrumy:moveGoal' goal_id=user_goal.goal_id %}">
+              {{user_goal.goal_name}}: {{user_goal.goal_id}}
+              </a>
+              {% endif %}
+              {% endfor %}
+            </td>
+            <td>
+              {% for user_goal in user.goal_owner.all %}
+              {% if user_goal in done_goals %}
+              <a href="{% url 'benpelumiscrumy:moveGoal' goal_id=user_goal.goal_id %}">
+              {{user_goal.goal_name}}: {{user_goal.goal_id}}
+              </a>
+              {% endif %}
+              {% endfor %}
+            </td>
+          </tr>
+          {% endfor %}
+          </tbody>
     </table>
+    <a href="{% url 'benpelumiscrumy:addGoal' %}"> Add a goal here</a>
 </body>
 </html>

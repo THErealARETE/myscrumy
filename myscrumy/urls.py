@@ -20,8 +20,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path ('benpelumiscrumyscrumy/', include('benpelumiscrumy.urls')),
-    #  path ('' , include ('benpelumiscrumy.urls'))
+    path ('benpelumiscrumy/', include('benpelumiscrumy.urls', namespace = 'benpelumiscrumy')),
+    # path ('movegoals/', include('benpelumiscrumy.urls'))
 ]
 
 # handler404 = 'benpelumiscrumy.views.error_404_view'
