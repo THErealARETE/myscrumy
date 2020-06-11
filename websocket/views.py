@@ -44,12 +44,23 @@ def _send_to_connection(connection_id, data):
 def send_message(request):
     body = _parse_body(request.body) 
     chat_message = ChatMessage.objects.create(username=body['body']["username"], 
-                                              content=body['body']["message"], 
+                                              message=body['body']["message"], 
                                               timestamp=body['body']["timestamp"])
     connections = [i.connection_id for i in Connection.objects.all()]
-    body= {'username':chat_message.username, 'content':chat_message.message, 'timestamp':chat_message.timestamp}
+    body= {'username':chat_message.username, 'message':chat_message.message, 'timestamp':chat_message.timestamp}
     data = {'messages':[body]}
     for connection_id in connections:
         _send_to_connection(connection_id, data)
     return JsonResponse({'message':'successfully sent'}, status=200)
     
+
+@csrf_exempt
+def get_recent_messages(request):
+    body = _parse_body(request.body)
+    connections = [i.connection_id for i in Connection.objects.all()]
+    message_list = [{'username':chat_message.username, 'message':chat_message.message,
+                     'timestamp':chat_message.timestamp} for chat_message in ChatMessage.objects.all()]
+    data = {'messages': message_list}
+    for connection_id in connections:
+        _send_to_connection(connection_id, data)
+    return JsonResponse({'message':'successfully sent'}, status=200)    
