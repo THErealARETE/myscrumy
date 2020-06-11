@@ -21,6 +21,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path ('benpelumiscrumy/', include('benpelumiscrumy.urls', namespace = 'benpelumiscrumy')),
+    path('websocket/', include('websocket.urls')),
     # path ('movegoals/', include('benpelumiscrumy.urls'))
 ]
 
