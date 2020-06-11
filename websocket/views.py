@@ -6,6 +6,8 @@ from .models import Connection, ChatMessage
 
 import json
 
+import boto3
+
 @csrf_exempt            
 def test(request):
     return JsonResponse({'message': 'hello Daud'}, status=200)
@@ -29,3 +31,25 @@ def disconnect(request):
     Connection.objects.get(connection_id=connection_id).delete()
     return JsonResponse({'message':'disconnect successfully'}, status=200)
 
+
+def _send_to_connection(connection_id, data):
+    gatewayapi = boto3.client('apigatewaymanagementapi', 
+                            endpoint_url= "https://l005djzr51.execute-api.us-east-1.amazonaws.com/test/",
+                            region_name='us-east-1',
+                            aws_access_key_id='',
+                            aws_secret_access_key= '')
+    return gatewayapi.post_to_connection(ConnectionId=connection_id, Data=json.dumps(data).encode('utf-8'))
+
+@csrf_exempt
+def send_message(request):
+    body = _parse_body(request.body) 
+    chat_message = ChatMessage.objects.create(username=body['body']["username"], 
+                                              message=body['body']["message"], 
+                                              timestamp=body['body']["timestamp"])
+    connections = [i.connection_id for i in Connection.objects.all()]
+    body= {'username':chat_message.username, 'message':chat_message.message, 'timestamp':chat_message.timestamp}
+    data = {'messages':[body]}
+    for connection in connections:
+        _send_to_connection(connection, data)
+    return JsonResponse({'message':'successfully sent'}, status=200)
+    
