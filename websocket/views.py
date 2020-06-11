@@ -36,8 +36,8 @@ def _send_to_connection(connection_id, data):
     gatewayapi = boto3.client('apigatewaymanagementapi', 
                             endpoint_url= "https://l005djzr51.execute-api.us-east-1.amazonaws.com/test/",
                             region_name='us-east-1',
-                            aws_access_key_id='',
-                            aws_secret_access_key= '')
+                            aws_access_key_id='AKIAIVLSJ2IA353NJX5A',
+                            aws_secret_access_key= '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')
     return gatewayapi.post_to_connection(ConnectionId=connection_id, Data=json.dumps(data).encode('utf-8'))
 
 @csrf_exempt
