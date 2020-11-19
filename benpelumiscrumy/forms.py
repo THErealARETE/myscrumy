@@ -24,4 +24,7 @@ class EditGoalForm(forms.ModelForm):
 
     class Meta:
         model = ScrumyGoals
-        fields = ('goal_name', 'goal_status')
+        fields = ('goal_name', 'goal_status' )
+
+
+        # 'goal_decription'

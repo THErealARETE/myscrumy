@@ -16,6 +16,7 @@ class ScrumyGoals(models.Model):
     created_by = models.CharField(max_length = 30)
     moved_by = models.CharField(max_length = 30)
     owner = models.CharField(max_length = 30)
+    # goal_description = models.TextField()
     goal_status = models.ForeignKey(
         GoalStatus,
         on_delete = models.PROTECT,

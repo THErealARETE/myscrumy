@@ -7,15 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    <p> {{request.user.username}} is logged in </p>
-    <form method="POST">
-       {% csrf_token %}
-       {{form.as_p}}
-       <button type="submit">Save</button>
+    <form method="post" action="">
+        {% csrf_token %}
+        <button type="submit" name="save" value="save">Save</button>
+        <input type="text" name="item">
+        <button type="submit" name="newItem" value="newItem"> Add Item</button>
     </form>
-    
 </body>
 </html>
-
-
-
